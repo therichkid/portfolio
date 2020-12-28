@@ -1,5 +1,7 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import "./services/icon-library";
+import IconLibrary from "./plugins/icon-library";
 
-createApp(App).mount("#app");
+const app = createApp(App);
+app.use(IconLibrary);
+app.mount("#app");
