@@ -17,7 +17,11 @@ interface ContactData {
 const db = initDb.database();
 
 const submit = functions.https.onRequest((request, response) => {
-  cors({ origin: true })(request, response, () => {
+  cors({ origin: true })(request, response, async () => {
+    if (request.method !== "POST") {
+      return;
+    }
+
     const data = request.body as ContactData;
 
     const validation = validate(data);
@@ -26,9 +30,10 @@ const submit = functions.https.onRequest((request, response) => {
       return;
     }
 
-    sendMail(data);
+    await sendMail(data);
 
-    db.ref("contact-form")
+    await db
+      .ref("contact-form")
       .push()
       .set(data);
 
@@ -49,7 +54,7 @@ const validate = (data: ContactData): { success: boolean; message?: string } => 
   };
 };
 
-const sendMail = (data: ContactData): void => {
+const sendMail = async (data: ContactData): Promise<void> => {
   const mailTransport = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -58,7 +63,7 @@ const sendMail = (data: ContactData): void => {
     }
   });
 
-  mailTransport.sendMail({
+  await mailTransport.sendMail({
     from: data.email,
     replyTo: data.email,
     to: functions.config().gmail.email,

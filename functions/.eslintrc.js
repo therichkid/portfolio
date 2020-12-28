@@ -21,7 +21,7 @@ module.exports = {
     "@typescript-eslint/prefer-for-of": "warn",
     "@typescript-eslint/triple-slash-reference": "error",
     "@typescript-eslint/unified-signatures": "warn",
-    "comma-dangle": ["error", "always-multiline"],
+    "comma-dangle": ["error", "never"],
     "constructor-super": "error",
     eqeqeq: ["warn", "always"],
     "import/no-deprecated": "warn",
@@ -50,5 +50,6 @@ module.exports = {
         returns: "return"
       }
     }
-  }
+  },
+  root: true
 };

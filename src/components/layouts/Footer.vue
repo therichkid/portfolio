@@ -23,7 +23,7 @@
         <a href="https://avatarmaker.com/" target="_blank" rel="noopener noreferrer">Avatar Maker</a>.
       </p>
 
-      <p>
+      <p class="pt-3">
         &copy; {{ new Date().getFullYear() }} &minus;
         <strong>Richard Zille</strong>
       </p>
