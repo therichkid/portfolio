@@ -33,7 +33,7 @@ $button-text-hover-background-color: transparent;
 @import "~bulma/sass/elements/container.sass";
 @import "~bulma/sass/elements/content.sass";
 @import "~bulma/sass/elements/icon.sass";
-// @import "~bulma/sass/elements/image.sass";
+@import "~bulma/sass/elements/image.sass";
 // @import "~bulma/sass/elements/notification.sass";
 // @import "~bulma/sass/elements/progress.sass";
 // @import "~bulma/sass/elements/table.sass";
@@ -73,6 +73,6 @@ $input-placeholder-color: $white;
 @import "~bulma/sass/helpers/_all.sass";
 
 // Layout
-// @import "~bulma/sass/layout/hero.sass";
+@import "~bulma/sass/layout/hero.sass";
 @import "~bulma/sass/layout/section.sass";
 @import "~bulma/sass/layout/footer.sass";

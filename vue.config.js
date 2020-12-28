@@ -1,3 +1,10 @@
 module.exports = {
-  productionSourceMap: false
+  productionSourceMap: false,
+  css: {
+    loaderOptions: {
+      sass: {
+        additionalData: `@import "~@/assets/styles/bulma.scss";`
+      }
+    }
+  }
 };

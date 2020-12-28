@@ -1,6 +1,7 @@
 <template>
   <NavBar />
 
+  <Hero />
   <Skills />
   <ContactForm />
 
@@ -11,6 +12,7 @@
 import { defineComponent } from "vue";
 import NavBar from "./components/layouts/NavBar.vue";
 import Footer from "./components/layouts/Footer.vue";
+import Hero from "./components/Hero.vue";
 import ContactForm from "./components/ContactForm.vue";
 import Skills from "./components/Skills.vue";
 
@@ -19,6 +21,7 @@ export default defineComponent({
   components: {
     NavBar,
     Footer,
+    Hero,
     ContactForm,
     Skills
   }
@@ -26,8 +29,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-@import "./assets/styles/bulma.scss";
-
 .anchor::before {
   content: "";
   display: block;

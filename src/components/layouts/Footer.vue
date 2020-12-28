@@ -16,7 +16,14 @@
         </a>
       </p>
 
-      <p class="pt-5">
+      <p class="pt-5 has-text-grey-lighter is-size-7">
+        Hero Background Image by
+        <a href="https://unsplash.com/@betagamma" target="_blank" rel="noopener noreferrer">Daniil Silantev</a> on
+        <a href="https://unsplash.com/" target="_blank" rel="noopener noreferrer">Unsplash</a>. Avatar created with
+        <a href="https://avatarmaker.com/" target="_blank" rel="noopener noreferrer">Avatar Maker</a>.
+      </p>
+
+      <p>
         &copy; {{ new Date().getFullYear() }} &minus;
         <strong>Richard Zille</strong>
       </p>
