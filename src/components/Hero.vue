@@ -24,12 +24,16 @@
           />
         </figure>
         <h1 class="title is-1 pt-5 pb-2">
-          {{ title.current || "&nbsp;" }}
-          <span v-if="!subtitle.current.length" class="blinking-cursor">|</span>
+          <span style="position: relative">
+            {{ title.current || "&nbsp;" }}
+            <span v-if="!subtitle.current.length && !animationFinished" class="blinking-cursor">|</span>
+          </span>
         </h1>
         <h2 class="subtitle is-3">
-          {{ subtitle.current || "&nbsp;" }}
-          <span v-if="subtitle.current.length" class="blinking-cursor">|</span>
+          <span style="position: relative">
+            {{ subtitle.current || "&nbsp;" }}
+            <span v-if="subtitle.current.length && !animationFinished" class="blinking-cursor">|</span>
+          </span>
         </h2>
       </div>
     </div>
@@ -44,6 +48,14 @@ interface Title {
   full: string;
 }
 
+type ImageMap = {
+  [key in "webp" | "jpg"]: {
+    1080: NodeRequire;
+    720: NodeRequire;
+    480: NodeRequire;
+  };
+};
+
 export default defineComponent({
   data() {
     return {
@@ -55,6 +67,7 @@ export default defineComponent({
         current: "",
         full: "I am a Web Developer."
       } as Title,
+      animationFinished: false,
       bgImg: {
         webp: {
           1080: require("@/assets/img/lake-turgoyak-1080.webp"),
@@ -80,6 +93,9 @@ export default defineComponent({
         });
         await this.addCharacters(title);
       }
+      setTimeout(() => {
+        this.animationFinished = true;
+      }, 5000);
     },
 
     addCharacters(title: Title): Promise<void> {
@@ -135,6 +151,9 @@ export default defineComponent({
 }
 
 .blinking-cursor {
+  position: absolute;
+  top: 0;
+  right: -10px;
   font-weight: 100 !important;
   animation: 1.5s blink step-end infinite;
 }
