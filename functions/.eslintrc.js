@@ -15,6 +15,7 @@ module.exports = {
     "@typescript-eslint/adjacent-overload-signatures": "error",
     "@typescript-eslint/no-empty-function": "error",
     "@typescript-eslint/no-empty-interface": "warn",
+    "@typescript-eslint/no-explicit-any": 0,
     "@typescript-eslint/no-floating-promises": "error",
     "@typescript-eslint/no-namespace": "error",
     "@typescript-eslint/no-unnecessary-type-assertion": "error",
@@ -50,6 +51,5 @@ module.exports = {
         returns: "return"
       }
     }
-  },
-  root: true
+  }
 };
