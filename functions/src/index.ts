@@ -55,19 +55,30 @@ const isValid = (data: ContactData): boolean => {
   return true;
 };
 
+// const gmailOptions = {
+//   service: "gmail",
+//   auth: {
+//     user: functions.config().gmail.email,
+//     pass: functions.config().gmail.password
+//   }
+// };
+
+const gmxOptions = {
+  host: "mail.gmx.net",
+  port: 587,
+  auth: {
+    user: functions.config().gmx.email,
+    pass: functions.config().gmx.password
+  }
+};
+
 const sendMail = async (data: ContactData): Promise<void> => {
-  const mailTransport = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: functions.config().gmail.email,
-      pass: functions.config().gmail.password
-    }
-  });
+  const mailTransport = nodemailer.createTransport(gmxOptions);
 
   await mailTransport.sendMail({
-    from: data.email,
+    from: functions.config().gmx.email,
     replyTo: data.email,
-    to: functions.config().gmail.email,
+    to: functions.config().gmx.email,
     subject: `A new message from ${data.name}`,
     text: data.message,
     html: [
