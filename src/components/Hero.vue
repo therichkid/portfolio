@@ -24,16 +24,12 @@
           />
         </figure>
         <h1 class="title is-1 pt-5 pb-2">
-          <span style="position: relative">
-            {{ title.current || "&nbsp;" }}
-            <span v-if="!subtitle.current.length && !animationFinished" class="blinking-cursor">|</span>
-          </span>
+          {{ title.current || "&nbsp;" }}
+          <span v-if="!subtitle.current.length && !animationFinished" class="blinking-cursor">|</span>
         </h1>
         <h2 class="subtitle is-3">
-          <span style="position: relative">
-            {{ subtitle.current || "&nbsp;" }}
-            <span v-if="subtitle.current.length && !animationFinished" class="blinking-cursor">|</span>
-          </span>
+          {{ subtitle.current || "&nbsp;" }}
+          <span v-if="subtitle.current.length && !animationFinished" class="blinking-cursor">|</span>
         </h2>
       </div>
     </div>
@@ -151,9 +147,6 @@ export default defineComponent({
 }
 
 .blinking-cursor {
-  position: absolute;
-  top: 0;
-  right: -10px;
   font-weight: 100 !important;
   animation: 1.5s blink step-end infinite;
 }

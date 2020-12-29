@@ -4,6 +4,7 @@ import {
   faAngular,
   faBootstrap,
   faCss3,
+  faGitAlt,
   faGithub,
   faHtml5,
   faJava,
@@ -36,6 +37,7 @@ export default {
       faAngular,
       faBootstrap,
       faNode,
+      faGitAlt,
       faWordpress
     );
 

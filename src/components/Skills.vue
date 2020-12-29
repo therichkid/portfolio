@@ -2,7 +2,7 @@
   <section class="section">
     <div class="container">
       <h2 class="title is-2 anchor" id="skills">Skills</h2>
-      <div v-for="(key, i) in ['languages', 'frontend', 'backend', 'cms']" :key="i">
+      <div v-for="(key, i) in ['languages', 'frontend', 'backend', 'tooling', 'cms']" :key="i">
         <h3 class="subtitle is-4 is-capitalized " :class="i && 'pt-6'">{{ key }}</h3>
         <div class="columns is-multiline">
           <div
@@ -41,6 +41,7 @@ interface Skillsets {
   languages: Skill[];
   frontend: Skill[];
   backend: Skill[];
+  tooling: Skill[];
   cms: Skill[];
 }
 
@@ -166,6 +167,27 @@ export default defineComponent({
             level: { current: 0, full: 50 },
             icon: "fab fa-node",
             color: "#68a063"
+          }
+        ],
+        tooling: [
+          {
+            id: "git",
+            name: "Git",
+            level: { current: 0, full: 75 },
+            icon: "fab fa-git-alt",
+            color: "#f34f29"
+          },
+          {
+            id: "svn",
+            name: "SVN",
+            level: { current: 0, full: 60 },
+            img: require("@/assets/img/logos/svn.png")
+          },
+          {
+            id: "fb",
+            name: "Google Firebase",
+            level: { current: 0, full: 50 },
+            img: require("@/assets/img/logos/firebase.png")
           }
         ],
         cms: [
