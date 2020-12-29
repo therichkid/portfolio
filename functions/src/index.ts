@@ -23,35 +23,36 @@ const submit = functions.https.onRequest((request, response) => {
     }
 
     const data = request.body as ContactData;
+    const errorMessage = "Something went wrong. Please try again later!";
 
-    const validation = validate(data);
-    if (!validation.success) {
-      response.status(400).send({ success: false, message: validation.message });
+    if (!isValid(data)) {
+      console.error("Failed validation check");
+      response.status(400).send({ success: false, message: errorMessage });
       return;
     }
 
-    await sendMail(data);
-
-    await db
-      .ref("contact-form")
-      .push()
-      .set(data);
+    try {
+      await sendMail(data);
+      await db
+        .ref("contact-form")
+        .push()
+        .set(data);
+    } catch (error) {
+      console.error(error);
+      response.status(400).send({ success: false, message: errorMessage });
+      return;
+    }
 
     response.status(200).send({ success: true, message: "Your message has been sent!" });
   });
 });
 
-const validate = (data: ContactData): { success: boolean; message?: string } => {
+const isValid = (data: ContactData): boolean => {
   // Spam checks
   if (data.hp || (data.timer && data.timer < 5000)) {
-    return {
-      success: false,
-      message: "Something went wrong. Please try again later!"
-    };
+    return false;
   }
-  return {
-    success: true
-  };
+  return true;
 };
 
 const sendMail = async (data: ContactData): Promise<void> => {

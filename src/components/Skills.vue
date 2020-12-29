@@ -75,7 +75,7 @@ export default defineComponent({
           {
             id: "ts",
             name: "TypeScript",
-            level: { current: 0, full: 85 },
+            level: { current: 0, full: 95 },
             img: require("@/assets/img/logos/ts.png")
           },
           {
@@ -103,15 +103,27 @@ export default defineComponent({
             id: "python",
             name: "Python",
             level: { current: 0, full: 40 },
-            icon: "fab fa-python",
-            color: "#ffde57"
+            img: require("@/assets/img/logos/python.png")
           },
           {
             id: "java",
             name: "Java",
             level: { current: 0, full: 50 },
             icon: "fab fa-java",
-            color: "#ed2025"
+            color: "#ffffff"
+          },
+          {
+            id: "php",
+            name: "PHP",
+            level: { current: 0, full: 40 },
+            icon: "fab fa-php",
+            color: "#8993be"
+          },
+          {
+            id: "sql",
+            name: "SQL",
+            level: { current: 0, full: 75 },
+            img: require("@/assets/img/logos/sql.png")
           }
         ],
         frontend: [
@@ -186,7 +198,7 @@ export default defineComponent({
           {
             id: "fb",
             name: "Google Firebase",
-            level: { current: 0, full: 50 },
+            level: { current: 0, full: 40 },
             img: require("@/assets/img/logos/firebase.png")
           }
         ],
@@ -194,7 +206,7 @@ export default defineComponent({
           {
             id: "wp",
             name: "WordPress",
-            level: { current: 0, full: 90 },
+            level: { current: 0, full: 85 },
             icon: "fab fa-wordpress",
             color: "#00749c"
           },

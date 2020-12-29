@@ -104,7 +104,10 @@ export default defineComponent({
       this.data.date = new Date().toISOString();
       this.data.timer = Date.now() - this.initTime;
 
-      fetch("http://localhost:5001/portfolio-1e5a5/us-central1/submit", {
+      const url = "https://us-central1-portfolio-1e5a5.cloudfunctions.net/submit";
+      // const debugUrl = "http://localhost:5001/portfolio-1e5a5/us-central1/submit";
+
+      fetch(url, {
         method: "POST",
         headers: {
           Accept: "application/json",

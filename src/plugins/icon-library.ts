@@ -11,7 +11,7 @@ import {
   faJs,
   faLinkedin,
   faNode,
-  faPython,
+  faPhp,
   faSass,
   faWordpress
 } from "@fortawesome/free-brands-svg-icons";
@@ -32,8 +32,8 @@ export default {
       faHtml5,
       faCss3,
       faSass,
-      faPython,
       faJava,
+      faPhp,
       faAngular,
       faBootstrap,
       faNode,
