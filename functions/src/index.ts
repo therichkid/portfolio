@@ -17,7 +17,7 @@ interface ContactData {
 const db = initDb.database();
 
 const submit = functions.https.onRequest((request, response) => {
-  cors({ origin: true })(request, response, async () => {
+  cors({ origin: true })(request, response, () => {
     if (request.method !== "POST") {
       return;
     }
@@ -31,19 +31,20 @@ const submit = functions.https.onRequest((request, response) => {
       return;
     }
 
-    try {
-      await sendMail(data);
-      await db
+    Promise.all([
+      sendMail(data),
+      db
         .ref("contact-form")
         .push()
-        .set(data);
-    } catch (error) {
-      console.error(error);
-      response.status(400).send({ success: false, message: errorMessage });
-      return;
-    }
-
-    response.status(200).send({ success: true, message: "Your message has been sent!" });
+        .set(data)
+    ])
+      .then(() => {
+        response.status(200).send({ success: true, message: "Your message has been sent!" });
+      })
+      .catch(error => {
+        console.error(error);
+        response.status(400).send({ success: false, message: errorMessage });
+      });
   });
 });
 
@@ -66,6 +67,10 @@ const isValid = (data: ContactData): boolean => {
 const gmxOptions = {
   host: "mail.gmx.net",
   port: 587,
+  tls: {
+    ciphers: "SSLv3",
+    rejectUnauthorized: false
+  },
   auth: {
     user: functions.config().gmx.email,
     pass: functions.config().gmx.password
