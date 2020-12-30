@@ -18,7 +18,9 @@
 
       <p class="pt-5 has-text-grey-lighter is-size-7">
         Hero Background Image by
-        <a href="https://unsplash.com/@betagamma" target="_blank" rel="noopener noreferrer">Daniil Silantev</a> on
+        <a href="https://unsplash.com/@betagamma" target="_blank" rel="noopener noreferrer">Daniil Silantev</a>, Code
+        Editor Image by
+        <a href="https://unsplash.com/@clark_fransa" target="_blank" rel="noopener noreferrer">Arnold Francisca</a> on
         <a href="https://unsplash.com/" target="_blank" rel="noopener noreferrer">Unsplash</a>. Avatar created with
         <a href="https://avatarmaker.com/" target="_blank" rel="noopener noreferrer">Avatar Maker</a>.
       </p>

@@ -52,10 +52,10 @@
                 </picture>
               </figure>
             </div>
-            <span class="icon is-medium has-text-dark" style="position: absolute; right: 0; top: 0">
+            <span class="icon overlay-icon has-background-dark">
               <i class="fas fa-expand-arrows-alt"></i>
             </span>
-            <div class="card-content subtitle is-size-6">
+            <div class="card-content">
               {{ certificate.name }}
             </div>
           </div>
@@ -413,11 +413,9 @@ export default defineComponent({
   max-height: 28px;
   width: auto;
 }
-.certificates {
-  img {
-    object-fit: cover;
-    object-position: top center;
-  }
+.certificates img {
+  object-fit: cover;
+  object-position: top center;
 }
 .progress::-webkit-progress-value {
   transition: width 0.1s ease;

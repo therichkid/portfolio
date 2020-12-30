@@ -1,5 +1,13 @@
 import { dom, library } from "@fortawesome/fontawesome-svg-core";
-import { faEnvelope, faExpandArrowsAlt, faIndustry, faMobile, faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCode,
+  faEnvelope,
+  faExpandArrowsAlt,
+  faGlobe,
+  faIndustry,
+  faMobile,
+  faUser
+} from "@fortawesome/free-solid-svg-icons";
 import {
   faAngular,
   faBootstrap,
@@ -24,6 +32,8 @@ export default {
       faEnvelope,
       faMobile,
       faExpandArrowsAlt,
+      faGlobe,
+      faCode,
 
       // Brands
       faGithub,

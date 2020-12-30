@@ -57,6 +57,10 @@ export default defineComponent({
           name: "Skills"
         },
         {
+          id: "projects",
+          name: "Projects"
+        },
+        {
           id: "contact",
           name: "Contact"
         }

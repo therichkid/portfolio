@@ -4,8 +4,8 @@
 
     <div class="container is-max-desktop">
       <div class="content has-text-justified is-size-5">
-        Please use this form if you like to say hi to me. Don't hesitate to get in touch with me if you are looking for
-        a new, professional website created with modern Web technologies.
+        Please use this form if you like to say hi! Don't hesitate to get in touch with me if you are looking for a new,
+        professional website created with modern Web technologies.
       </div>
 
       <Alert v-if="showAlert" :alert="alert" @close="showAlert = false" />
