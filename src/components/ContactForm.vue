@@ -1,7 +1,14 @@
 <template>
   <section class="section">
-    <div class="container">
-      <h2 class="title is-2 anchor" id="contact-me">Contact Me</h2>
+    <h2 class="title has-text-centered is-size-2 anchor" id="contact">Contact Me</h2>
+
+    <div class="container is-max-desktop">
+      <div class="content has-text-justified is-size-5">
+        <p>
+          Please use this form if you like to say hi to me. Don't hesitate to get in touch with me if you are looking
+          for a new, professional website created with modern Web technologies.
+        </p>
+      </div>
 
       <Alert v-if="showAlert" :alert="alert" @close="showAlert = false" />
 
@@ -10,7 +17,7 @@
           <div class="column is-mobile">
             <div class="field">
               <div class="control has-icons-left">
-                <input type="text" v-model="data.name" class="input" placeholder="Name" required />
+                <input type="text" v-model="data.name" class="input" placeholder="Name *" required />
                 <span class="icon is-left">
                   <i class="fa fa-user"></i>
                 </span>
@@ -32,7 +39,7 @@
           <div class="column is-mobile">
             <div class="field">
               <div class="control has-icons-left">
-                <input type="email" v-model="data.email" class="input" placeholder="Email" required />
+                <input type="email" v-model="data.email" class="input" placeholder="Email *" required />
                 <span class="icon is-left">
                   <i class="fa fa-envelope"></i>
                 </span>
@@ -56,9 +63,12 @@
           </div>
         </div>
         <div class="field">
-          <textarea v-model="data.message" rows="5" class="textarea" placeholder="Message"></textarea>
+          <textarea v-model="data.message" rows="5" class="textarea" placeholder="Message *" required></textarea>
         </div>
-        <button type="submit" class="button is-primary is-medium mt-3">Submit</button>
+        <p class="has-text-right has-text-grey is-size-7">* Required</p>
+        <button type="submit" class="button is-primary is-medium mt-2" :class="{ 'is-loading': isLoading }">
+          Submit
+        </button>
       </form>
     </div>
   </section>
@@ -94,13 +104,17 @@ export default defineComponent({
       data: {} as ContactData,
       alert: {} as Alert,
       showAlert: false,
-      initTime: 0
+      initTime: 0,
+      isLoading: false
     };
   },
 
   methods: {
     submitForm(event: Event): void {
       event.preventDefault();
+
+      this.showAlert = false;
+      this.isLoading = true;
       this.data.date = new Date().toISOString();
       this.data.timer = Date.now() - this.initTime;
 
@@ -128,7 +142,10 @@ export default defineComponent({
           console.error(error);
           this.alert = { type: "error", message: error };
         })
-        .finally(() => (this.showAlert = true));
+        .finally(() => {
+          this.showAlert = true;
+          this.isLoading = false;
+        });
     }
   },
 

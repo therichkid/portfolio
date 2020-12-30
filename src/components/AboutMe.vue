@@ -1,4 +1,5 @@
 <template>
+  <div style="height: 52px" id="about-me"></div>
   <section class="hero is-primary has-background">
     <picture class="hero-background is-transparent is-darker">
       <source
@@ -23,14 +24,31 @@
             height="128"
           />
         </figure>
-        <h1 class="title is-1 pt-5 pb-2">
+        <h1 class="title is-size-1 pt-5 pb-2">
           {{ title.current || "&nbsp;" }}
           <span v-if="!subtitle.current.length && !animationFinished" class="blinking-cursor">|</span>
         </h1>
-        <h2 class="subtitle is-3">
+        <h2 class="subtitle is-size-3">
           {{ subtitle.current || "&nbsp;" }}
           <span v-if="subtitle.current.length && !animationFinished" class="blinking-cursor">|</span>
         </h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="content has-text-justified is-size-5">
+        <p>
+          I am a <b>Frontend</b> developer with knowledge in Design and Backend technologies living in Munich, Germany.
+          I love to code in <b>TypeScript</b> and utilize <b>Angular</b> and <b>Vue</b> for my projects. I am naturally
+          curious and always eager to learn new technologies.
+        </p>
+        <p>
+          I have a Master's degree in Geoinformatics and work for <b>European Computer Telecoms</b>, a Software company
+          specialized in telecommunications. In addition, I design, create and maintain Web projects for multiple
+          satisfied clients with my own company, <b>Thrive Media</b>.
+        </p>
       </div>
     </div>
   </section>

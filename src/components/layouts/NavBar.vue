@@ -20,7 +20,7 @@
         <a
           v-for="item in navItems"
           :key="item.id"
-          :href="`#${item.id}`"
+          :href="item.href || `#${item.id}`"
           class="navbar-item"
           :class="{ 'is-active': activeItem === item.id }"
         >
@@ -29,8 +29,6 @@
       </div>
     </div>
   </nav>
-
-  <div style="height: 52px"></div>
 </template>
 
 <script lang="ts">
@@ -39,6 +37,7 @@ import helpers from "@/mixins/helpers";
 
 interface NavItem {
   id: string;
+  href?: string;
   name: string;
 }
 
@@ -50,15 +49,19 @@ export default defineComponent({
       isMenuOpen: false,
       navItems: [
         {
+          id: "about-me",
+          name: "About Me"
+        },
+        {
           id: "skills",
           name: "Skills"
         },
         {
-          id: "contact-me",
-          name: "Contact Me"
+          id: "contact",
+          name: "Contact"
         }
       ] as NavItem[],
-      activeItem: "skills" as string
+      activeItem: "about-me" as string
     };
   },
 

@@ -1,9 +1,18 @@
 <template>
   <section class="section">
-    <div class="container">
-      <h2 class="title is-2 anchor" id="skills">Skills</h2>
-      <div v-for="(key, i) in ['languages', 'frontend', 'backend', 'tooling', 'cms']" :key="i">
-        <h3 class="subtitle is-4 is-capitalized " :class="i && 'pt-6'">{{ key }}</h3>
+    <h2 class="title has-text-centered is-size-2 anchor" id="skills">Skills</h2>
+    <div class="container is-max-desktop">
+      <div v-for="(key, i) in ['languages', 'frontend', 'backend', 'design', 'tooling', 'cms']" :key="i">
+        <h3
+          class="subtitle is-size-4"
+          :class="{
+            'is-capitalized': key !== 'cms',
+            'is-uppercase': key === 'cms',
+            'mt-6': i > 0
+          }"
+        >
+          {{ key }}
+        </h3>
         <div class="columns is-multiline">
           <div
             v-for="skill in skillsets[key]"
@@ -41,6 +50,7 @@ interface Skillsets {
   languages: Skill[];
   frontend: Skill[];
   backend: Skill[];
+  design: Skill[];
   tooling: Skill[];
   cms: Skill[];
 }
@@ -109,8 +119,7 @@ export default defineComponent({
             id: "java",
             name: "Java",
             level: { current: 0, full: 50 },
-            icon: "fab fa-java",
-            color: "#ffffff"
+            img: require("@/assets/img/logos/java.png")
           },
           {
             id: "php",
@@ -179,6 +188,14 @@ export default defineComponent({
             level: { current: 0, full: 50 },
             icon: "fab fa-node",
             color: "#68a063"
+          }
+        ],
+        design: [
+          {
+            id: "figma",
+            name: "Figma",
+            level: { current: 0, full: 75 },
+            img: require("@/assets/img/logos/figma.png")
           }
         ],
         tooling: [
