@@ -4,7 +4,7 @@
     <div class="container is-max-desktop">
       <div v-for="(key, i) in ['languages', 'frontend', 'backend', 'design', 'tooling', 'cms']" :key="i">
         <h3
-          class="subtitle is-size-4"
+          class="subtitle is-size-4 pt-4"
           :class="{
             'is-capitalized': key !== 'cms',
             'is-uppercase': key === 'cms',
@@ -13,7 +13,7 @@
         >
           {{ key }}
         </h3>
-        <div class="columns is-multiline">
+        <div class="columns is-multiline skills">
           <div
             v-for="skill in skillsets[key]"
             :key="skill.id"
@@ -37,6 +37,48 @@
             </progress>
           </div>
         </div>
+      </div>
+
+      <h3 class="subtitle is-size-4 mt-6 pt-4">Certificates</h3>
+      <div class="columns is-multiline is-mobile certificates">
+        <div v-for="certificate in certificates" :key="certificate.name" class="column is-3-desktop is-6-mobile">
+          <div class="card is-interactive" style="height: 100%" @click="openModal(certificate)">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <picture>
+                  <source :srcset="certificate.img.webp['480']" type="image/webp" />
+                  <source :srcset="certificate.img.jpg['480']" type="image/jpeg" />
+                  <img :src="certificate.img.jpg['480']" :alt="certificate.name" />
+                </picture>
+              </figure>
+            </div>
+            <span class="icon is-medium has-text-dark" style="position: absolute; right: 0; top: 0">
+              <i class="fas fa-expand-arrows-alt"></i>
+            </span>
+            <div class="card-content subtitle is-size-6">
+              {{ certificate.name }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal" :class="{ 'is-active': modal.isOpen }" v-if="modal.isOpen">
+        <div @click="closeModal()" class="modal-background"></div>
+        <div class="modal-content">
+          <figure :class="`image is-${modal.certificate.format}`">
+            <picture>
+              <source
+                :srcset="`${modal.certificate.img.webp['1280']} 1280w, ${modal.certificate.img.webp['480']} 720w`"
+                type="image/webp"
+              />
+              <source
+                :srcset="`${modal.certificate.img.jpg['1280']} 1280w, ${modal.certificate.img.jpg['480']} 720w`"
+                type="image/jpeg"
+              />
+              <img :src="modal.certificate.img.jpg['1280']" :alt="modal.certificate.name" />
+            </picture>
+          </figure>
+        </div>
+        <button @click="closeModal()" class="modal-close is-large" aria-label="close"></button>
       </div>
     </div>
   </section>
@@ -67,6 +109,19 @@ interface Skill {
   img?: NodeRequire;
   _animated?: boolean;
 }
+
+interface Certificate {
+  name: string;
+  img: ImageMap;
+  format: "4by3" | "3by4";
+}
+
+type ImageMap = {
+  [key in "webp" | "jpg"]: {
+    1280: NodeRequire;
+    480: NodeRequire;
+  };
+};
 
 export default defineComponent({
   mixins: [helpers],
@@ -234,7 +289,69 @@ export default defineComponent({
             img: require("@/assets/img/logos/prestashop.png")
           }
         ]
-      } as Skillsets
+      } as Skillsets,
+      certificates: [
+        {
+          name: "Angular & TypeScript Intensiv-Schulung",
+          img: {
+            webp: {
+              1280: require("@/assets/img/certificates/angular-typescript-1280.webp"),
+              480: require("@/assets/img/certificates/angular-typescript-480.webp")
+            },
+            jpg: {
+              1280: require("@/assets/img/certificates/angular-typescript-1280.jpg"),
+              480: require("@/assets/img/certificates/angular-typescript-480.jpg")
+            }
+          },
+          format: "3by4"
+        },
+        {
+          name: "Accelerated ES6 JavaScript Training",
+          img: {
+            webp: {
+              1280: require("@/assets/img/certificates/accelerated-es6-1280.webp"),
+              480: require("@/assets/img/certificates/accelerated-es6-480.webp")
+            },
+            jpg: {
+              1280: require("@/assets/img/certificates/accelerated-es6-1280.jpg"),
+              480: require("@/assets/img/certificates/accelerated-es6-480.jpg")
+            }
+          },
+          format: "4by3"
+        },
+        {
+          name: "Mastering Clean Code in JavaScript",
+          img: {
+            webp: {
+              1280: require("@/assets/img/certificates/clean-code-1280.webp"),
+              480: require("@/assets/img/certificates/clean-code-480.webp")
+            },
+            jpg: {
+              1280: require("@/assets/img/certificates/clean-code-1280.jpg"),
+              480: require("@/assets/img/certificates/clean-code-480.jpg")
+            }
+          },
+          format: "4by3"
+        },
+        {
+          name: "UNIcert English Level II",
+          img: {
+            webp: {
+              1280: require("@/assets/img/certificates/unicert-1280.webp"),
+              480: require("@/assets/img/certificates/unicert-480.webp")
+            },
+            jpg: {
+              1280: require("@/assets/img/certificates/unicert-1280.jpg"),
+              480: require("@/assets/img/certificates/unicert-480.jpg")
+            }
+          },
+          format: "3by4"
+        }
+      ] as Certificate[],
+      modal: {
+        isOpen: false,
+        certificate: {} as Certificate
+      }
     };
   },
 
@@ -258,7 +375,6 @@ export default defineComponent({
         window.removeEventListener("scroll", this.setProgressAnimations);
       }
     },
-
     addProgressAnimation(skill: Skill): void {
       const interval = setInterval(() => {
         if (skill.level.current < skill.level.full) {
@@ -267,6 +383,18 @@ export default defineComponent({
           clearInterval(interval);
         }
       }, 50);
+    },
+    openModal(certificate: Certificate) {
+      this.modal = {
+        isOpen: true,
+        certificate
+      };
+    },
+    closeModal() {
+      this.modal = {
+        isOpen: false,
+        certificate: {} as Certificate
+      };
     }
   },
 
@@ -281,11 +409,16 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-img {
+.skills img {
   max-height: 28px;
   width: auto;
 }
-
+.certificates {
+  img {
+    object-fit: cover;
+    object-position: top center;
+  }
+}
 .progress::-webkit-progress-value {
   transition: width 0.1s ease;
 }

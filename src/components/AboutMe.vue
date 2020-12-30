@@ -3,11 +3,11 @@
   <section class="hero is-primary has-background">
     <picture class="hero-background is-transparent is-darker">
       <source
-        :srcset="`${bgImg.webp['1080']} 1920w, ${bgImg.webp['720']} 1280w, ${bgImg.webp['480']} 720w`"
+        :srcset="`${bgImg.webp['1920']} 1920w, ${bgImg.webp['1280']} 1280w, ${bgImg.webp['480']} 720w`"
         type="image/webp"
       />
       <source
-        :srcset="`${bgImg.jpg['1080']} 1920w, ${bgImg.jpg['720']} 1280w, ${bgImg.jpg['480']} 720w`"
+        :srcset="`${bgImg.jpg['1920']} 1920w, ${bgImg.jpg['1280']} 1280w, ${bgImg.jpg['480']} 720w`"
         type="image/jpeg"
       />
       <img class="hero-background-img" :src="bgImg.jpg['720']" alt="Lake Turgoyak" />
@@ -64,8 +64,8 @@ interface Title {
 
 type ImageMap = {
   [key in "webp" | "jpg"]: {
-    1080: NodeRequire;
-    720: NodeRequire;
+    1920: NodeRequire;
+    1280: NodeRequire;
     480: NodeRequire;
   };
 };
@@ -84,14 +84,14 @@ export default defineComponent({
       animationFinished: false,
       bgImg: {
         webp: {
-          1080: require("@/assets/img/lake-turgoyak-1080.webp"),
-          720: require("@/assets/img/lake-turgoyak-720.webp"),
-          480: require("@/assets/img/lake-turgoyak-480.webp")
+          1920: require("@/assets/img/hero/lake-turgoyak-1920.webp"),
+          1280: require("@/assets/img/hero/lake-turgoyak-1280.webp"),
+          480: require("@/assets/img/hero/lake-turgoyak-480.webp")
         },
         jpg: {
-          1080: require("@/assets/img/lake-turgoyak-1080.jpg"),
-          720: require("@/assets/img/lake-turgoyak-720.jpg"),
-          480: require("@/assets/img/lake-turgoyak-480.jpg")
+          1920: require("@/assets/img/hero/lake-turgoyak-1920.jpg"),
+          1280: require("@/assets/img/hero/lake-turgoyak-1280.jpg"),
+          480: require("@/assets/img/hero/lake-turgoyak-480.jpg")
         }
       }
     };

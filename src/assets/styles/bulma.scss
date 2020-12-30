@@ -13,8 +13,8 @@ $scheme-invert: $white;
 $scheme-invert-bis: $white-bis;
 $scheme-invert-ter: $white-ter;
 $background: $black-ter;
-$border: $grey-dark;
-$border-hover: $grey;
+$border: $grey-darker;
+$border-hover: $grey-dark;
 $border-light: $black-ter;
 $text: $white;
 $text-strong: $white;
@@ -44,6 +44,11 @@ $button-text-hover-background-color: transparent;
 
 // Form
 $input-placeholder-color: $white;
+$input-shadow: none;
+.input,
+.textarea {
+  border-width: 2px;
+}
 
 @import "~bulma/sass/form/shared.sass";
 @import "~bulma/sass/form/input-textarea.sass";
@@ -53,14 +58,22 @@ $input-placeholder-color: $white;
 @import "~bulma/sass/form/tools.sass";
 
 // Components
+$card-background-color: $scheme-main-bis;
+$card-shadow: 0 0 0 2px $border;
+.card.is-interactive:hover {
+  cursor: pointer;
+  box-shadow: 0 0 0 2px $border-hover;
+}
+$modal-background-background-color: bulmaRgba($scheme-main, 0.86);
+
 // @import "~bulma/sass/components/breadcrumb.sass";
-// @import "~bulma/sass/components/card.sass";
+@import "~bulma/sass/components/card.sass";
 // @import "~bulma/sass/components/dropdown.sass";
 // @import "~bulma/sass/components/level.sass";
 // @import "~bulma/sass/components/media.sass";
 // @import "~bulma/sass/components/menu.sass";
 @import "~bulma/sass/components/message.sass";
-// @import "~bulma/sass/components/modal.sass";
+@import "~bulma/sass/components/modal.sass";
 @import "~bulma/sass/components/navbar.sass";
 // @import "~bulma/sass/components/pagination.sass";
 // @import "~bulma/sass/components/panel.sass";
