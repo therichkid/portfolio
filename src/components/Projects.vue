@@ -155,6 +155,23 @@ export default defineComponent({
           github: "https://github.com/therichkid/nh-bayern"
         },
         {
+          name: "Portfolio",
+          img: {
+            webp: {
+              960: require("@/assets/img/projects/portfolio-960.webp"),
+              480: require("@/assets/img/projects/portfolio-480.webp")
+            },
+            jpg: {
+              960: require("@/assets/img/projects/portfolio-960.jpg"),
+              480: require("@/assets/img/projects/portfolio-480.jpg")
+            }
+          },
+          description:
+            "The website you are currently visiting was created with Vue 3. The project includes Firebase functions for saving contact requests to a realtime database and sending eMails with basic spam protection.",
+          technologies: ["ts", "vue", "bulma", "firebase"],
+          github: "https://github.com/therichkid/portfolio"
+        },
+        {
           name: "Contao-to-WordPress Converter",
           img: {
             webp: {

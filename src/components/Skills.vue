@@ -153,8 +153,8 @@ export default defineComponent({
           { id: "firebase", level: { current: 0, full: 40 } }
         ],
         cms: [
-          { id: "wp", level: { current: 0, full: 85 } },
-          { id: "ps", level: { current: 0, full: 75 } }
+          { id: "wordpress", level: { current: 0, full: 85 } },
+          { id: "prestashop", level: { current: 0, full: 75 } }
         ]
       } as Skillsets,
       certificates: [

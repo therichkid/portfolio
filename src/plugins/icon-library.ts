@@ -156,12 +156,12 @@ export default {
         name: "Google Firebase",
         img: require("@/assets/img/logos/firebase.png")
       },
-      wp: {
+      wordpress: {
         name: "WordPress",
         icon: "fab fa-wordpress",
         color: "#00749c"
       },
-      ps: {
+      prestashop: {
         name: "PrestaShop",
         img: require("@/assets/img/logos/prestashop.png")
       }
