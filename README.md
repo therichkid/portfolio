@@ -5,7 +5,7 @@
 [logo]: https://www.rzille.de/img/og_image.png
 [website]: https://www.rzille.de
 
-My portfolio website created with TypeScript, Vue 3 and Bulma. The project includes Firebase functions for saving contact requests to a realtime database and sending E-Mails with basic spam protection. Scripts for continuous deployments to Firebase Hosting are included under `.github/workflows`.
+My portfolio website created with TypeScript, Vue 3 and Bulma. The project includes Firebase functions for saving contact requests to a realtime database and sending Emails with basic spam protection. Scripts for continuous deployments to Firebase Hosting are included under `.github/workflows`.
 
 ## Used libraries
 

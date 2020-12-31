@@ -15,7 +15,7 @@
           <div class="column is-mobile">
             <div class="field">
               <div class="control has-icons-left">
-                <input type="text" v-model="data.name" class="input" placeholder="Name *" required />
+                <input type="text" v-model="data.name" class="input" placeholder="Name *" required aria-label="Name" />
                 <span class="icon is-left">
                   <i class="fa fa-user"></i>
                 </span>
@@ -25,7 +25,7 @@
           <div class="column is-mobile">
             <div class="field">
               <div class="control has-icons-left">
-                <input type="text" v-model="data.company" class="input" placeholder="Company" />
+                <input type="text" v-model="data.company" class="input" placeholder="Company" aria-label="Company" />
                 <span class="icon is-left">
                   <i class="fa fa-industry"></i>
                 </span>
@@ -37,7 +37,14 @@
           <div class="column is-mobile">
             <div class="field">
               <div class="control has-icons-left">
-                <input type="email" v-model="data.email" class="input" placeholder="Email *" required />
+                <input
+                  type="email"
+                  v-model="data.email"
+                  class="input"
+                  placeholder="Email *"
+                  required
+                  aria-label="Email"
+                />
                 <span class="icon is-left">
                   <i class="fa fa-envelope"></i>
                 </span>
@@ -47,7 +54,7 @@
           <div class="column is-mobile">
             <div class="field">
               <div class="control has-icons-left">
-                <input type="tel" v-model="data.phone" class="input" placeholder="Phone" />
+                <input type="tel" v-model="data.phone" class="input" placeholder="Phone" aria-label="Phone" />
                 <span class="icon is-left">
                   <i class="fa fa-mobile"></i>
                 </span>
@@ -57,11 +64,18 @@
         </div>
         <div class="field" id="hp">
           <div class="control">
-            <input type="text" v-model="data.hp" class="input" placeholder="HP" />
+            <input type="text" v-model="data.hp" class="input" placeholder="HP" aria-label="HP" />
           </div>
         </div>
         <div class="field">
-          <textarea v-model="data.message" rows="5" class="textarea" placeholder="Message *" required></textarea>
+          <textarea
+            v-model="data.message"
+            rows="5"
+            class="textarea"
+            placeholder="Message *"
+            required
+            aria-label="Message"
+          ></textarea>
         </div>
         <p class="has-text-right has-text-grey is-size-7">* Required</p>
         <button type="submit" class="button is-primary is-medium mt-2" :class="{ 'is-loading': isLoading }">
