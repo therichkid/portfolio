@@ -24,13 +24,13 @@
               class="is-flex is-justify-content-center is-align-items-center is-flex-shrink-0"
               style="flex-basis: 48px"
             >
-              <span v-if="skill.icon" class="icon is-large" :style="{ color: skill.color }">
-                <i :class="`${skill.icon} fa-2x`"></i>
+              <span v-if="$iconMap[skill.id].icon" class="icon is-large" :style="{ color: $iconMap[skill.id].color }">
+                <i :class="`${$iconMap[skill.id].icon} fa-2x`"></i>
               </span>
-              <img v-else-if="skill.img" :src="skill.img" :alt="skill.name" />
+              <img v-else-if="$iconMap[skill.id].img" :src="$iconMap[skill.id].img" :alt="$iconMap[skill.id].name" />
             </div>
             <span class="pl-2 is-flex-shrink-0" style="flex-basis: 110px">
-              {{ skill.name }}
+              {{ $iconMap[skill.id].name }}
             </span>
             <progress :value="skill.level.current" max="100" class="progress is-primary">
               {{ skill.level.current }}%
@@ -99,14 +99,10 @@ interface Skillsets {
 
 interface Skill {
   id: string;
-  name: string;
   level: {
     current: number;
     full: number;
   };
-  icon?: string;
-  color?: string;
-  img?: NodeRequire;
   _animated?: boolean;
 }
 
@@ -130,164 +126,35 @@ export default defineComponent({
     return {
       skillsets: {
         languages: [
-          {
-            id: "js",
-            name: "JavaScript",
-            level: { current: 0, full: 95 },
-            icon: "fab fa-js",
-            color: "#f0db4f"
-          },
-          {
-            id: "ts",
-            name: "TypeScript",
-            level: { current: 0, full: 95 },
-            img: require("@/assets/img/logos/ts.png")
-          },
-          {
-            id: "html",
-            name: "HTML5",
-            level: { current: 0, full: 90 },
-            icon: "fab fa-html5",
-            color: "#e34c26"
-          },
-          {
-            id: "css",
-            name: "CSS3",
-            level: { current: 0, full: 80 },
-            icon: "fab fa-css3",
-            color: "#264de4"
-          },
-          {
-            id: "sass",
-            name: "SASS",
-            level: { current: 0, full: 65 },
-            icon: "fab fa-sass",
-            color: "#cd6799"
-          },
-          {
-            id: "python",
-            name: "Python",
-            level: { current: 0, full: 40 },
-            img: require("@/assets/img/logos/python.png")
-          },
-          {
-            id: "java",
-            name: "Java",
-            level: { current: 0, full: 50 },
-            img: require("@/assets/img/logos/java.png")
-          },
-          {
-            id: "php",
-            name: "PHP",
-            level: { current: 0, full: 40 },
-            icon: "fab fa-php",
-            color: "#8993be"
-          },
-          {
-            id: "sql",
-            name: "SQL",
-            level: { current: 0, full: 75 },
-            img: require("@/assets/img/logos/sql.png")
-          }
+          { id: "js", level: { current: 0, full: 95 } },
+          { id: "ts", level: { current: 0, full: 95 } },
+          { id: "html", level: { current: 0, full: 90 } },
+          { id: "css", level: { current: 0, full: 80 } },
+          { id: "sass", level: { current: 0, full: 65 } },
+          { id: "python", level: { current: 0, full: 40 } },
+          { id: "java", level: { current: 0, full: 50 } },
+          { id: "php", level: { current: 0, full: 40 } },
+          { id: "sql", level: { current: 0, full: 75 } }
         ],
         frontend: [
-          {
-            id: "angular",
-            name: "Angular",
-            level: { current: 0, full: 90 },
-            icon: "fab fa-angular",
-            color: "#dd1b16"
-          },
-          {
-            id: "vue",
-            name: "Vue",
-            level: { current: 0, full: 95 },
-            img: require("@/assets/img/logos/vue.png")
-          },
-          {
-            id: "am",
-            name: "Angular Material",
-            level: { current: 0, full: 70 },
-            img: require("@/assets/img/logos/angular-material.png")
-          },
-          {
-            id: "vuetify",
-            name: "Vuetify",
-            level: { current: 0, full: 95 },
-            img: require("@/assets/img/logos/vuetify.png")
-          },
-          {
-            id: "bulma",
-            name: "Bulma",
-            level: { current: 0, full: 65 },
-            img: require("@/assets/img/logos/bulma.png")
-          },
-          {
-            id: "bs",
-            name: "Bootstrap",
-            level: { current: 0, full: 70 },
-            icon: "fab fa-bootstrap",
-            color: "#563d7c"
-          },
-          {
-            id: "leaflet",
-            name: "Leaflet",
-            level: { current: 0, full: 85 },
-            img: require("@/assets/img/logos/leaflet.png")
-          }
+          { id: "angular", level: { current: 0, full: 90 } },
+          { id: "vue", level: { current: 0, full: 95 } },
+          { id: "am", level: { current: 0, full: 70 } },
+          { id: "vuetify", level: { current: 0, full: 95 } },
+          { id: "bulma", level: { current: 0, full: 65 } },
+          { id: "bootstrap", level: { current: 0, full: 70 } },
+          { id: "leaflet", level: { current: 0, full: 85 } }
         ],
-        backend: [
-          {
-            id: "node",
-            name: "Node.js",
-            level: { current: 0, full: 50 },
-            icon: "fab fa-node",
-            color: "#68a063"
-          }
-        ],
-        design: [
-          {
-            id: "figma",
-            name: "Figma",
-            level: { current: 0, full: 75 },
-            img: require("@/assets/img/logos/figma.png")
-          }
-        ],
+        backend: [{ id: "node", level: { current: 0, full: 50 } }],
+        design: [{ id: "figma", level: { current: 0, full: 75 } }],
         tooling: [
-          {
-            id: "git",
-            name: "Git",
-            level: { current: 0, full: 75 },
-            icon: "fab fa-git-alt",
-            color: "#f34f29"
-          },
-          {
-            id: "svn",
-            name: "SVN",
-            level: { current: 0, full: 60 },
-            img: require("@/assets/img/logos/svn.png")
-          },
-          {
-            id: "fb",
-            name: "Google Firebase",
-            level: { current: 0, full: 40 },
-            img: require("@/assets/img/logos/firebase.png")
-          }
+          { id: "git", level: { current: 0, full: 75 } },
+          { id: "svn", level: { current: 0, full: 60 } },
+          { id: "firebase", level: { current: 0, full: 40 } }
         ],
         cms: [
-          {
-            id: "wp",
-            name: "WordPress",
-            level: { current: 0, full: 85 },
-            icon: "fab fa-wordpress",
-            color: "#00749c"
-          },
-          {
-            id: "ps",
-            name: "PrestaShop",
-            level: { current: 0, full: 75 },
-            img: require("@/assets/img/logos/prestashop.png")
-          }
+          { id: "wp", level: { current: 0, full: 85 } },
+          { id: "ps", level: { current: 0, full: 75 } }
         ]
       } as Skillsets,
       certificates: [

@@ -34,15 +34,15 @@
                   v-for="technology in project.technologies"
                   :key="technology"
                   class="mr-3"
-                  :title="iconMap[technology].name"
+                  :title="$iconMap[technology].name"
                 >
-                  <span v-if="iconMap[technology].icon" class="icon" :style="{ color: iconMap[technology].color }">
-                    <i :class="`${iconMap[technology].icon} fa-2x`"></i>
+                  <span v-if="$iconMap[technology].icon" class="icon" :style="{ color: $iconMap[technology].color }">
+                    <i :class="`${$iconMap[technology].icon} fa-2x`"></i>
                   </span>
                   <img
-                    v-else-if="iconMap[technology].img"
-                    :src="iconMap[technology].img"
-                    :alt="iconMap[technology].name"
+                    v-else-if="$iconMap[technology].img"
+                    :src="$iconMap[technology].img"
+                    :alt="$iconMap[technology].name"
                   />
                 </span>
               </div>
@@ -95,15 +95,6 @@ type ImageMap = {
     960: NodeRequire;
   };
 };
-
-interface IconMap {
-  [key: string]: {
-    name: string;
-    icon?: string;
-    color?: string;
-    img?: NodeRequire;
-  };
-}
 
 export default defineComponent({
   data() {
@@ -179,35 +170,7 @@ export default defineComponent({
           technologies: ["node", "wordpress"],
           github: "https://github.com/therichkid/content-transformer-contao-to-wordpress"
         }
-      ] as Project[],
-      iconMap: {
-        vue: {
-          name: "Vue",
-          img: require("@/assets/img/logos/vue.png")
-        },
-        vuetify: {
-          name: "Vuetify",
-          img: require("@/assets/img/logos/vuetify.png")
-        },
-        leaflet: {
-          name: "Leaflet",
-          img: require("@/assets/img/logos/leaflet.png")
-        },
-        wordpress: {
-          name: "WordPress",
-          icon: "fab fa-wordpress",
-          color: "#00749c"
-        },
-        prestashop: {
-          name: "PrestaShop",
-          img: require("@/assets/img/logos/prestashop.png")
-        },
-        node: {
-          name: "Node.js",
-          icon: "fab fa-node",
-          color: "#68a063"
-        }
-      } as IconMap
+      ] as Project[]
     };
   }
 });
