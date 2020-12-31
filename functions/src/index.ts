@@ -49,8 +49,12 @@ const submit = functions.https.onRequest((request, response) => {
 });
 
 const isValid = (data: ContactData): boolean => {
+  // Mandatory checks
+  if (!data.name || !data.email || !data.message || !data.date) {
+    return false;
+  }
   // Spam checks
-  if (data.hp || (data.timer && data.timer < 5000)) {
+  if (data.hp || data.timer < 5000) {
     return false;
   }
   return true;
