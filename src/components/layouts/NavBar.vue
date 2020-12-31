@@ -20,6 +20,7 @@
         <a
           v-for="item in navItems"
           :key="item.id"
+          @click="isMenuOpen = false"
           :href="item.href || `#${item.id}`"
           class="navbar-item"
           :class="{ 'is-active': activeItem === item.id }"

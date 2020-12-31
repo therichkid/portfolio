@@ -43,6 +43,6 @@ export default defineComponent({
   right: 5px;
   top: 5px;
   border-radius: 50%;
-  opacity: 50%;
+  opacity: 0.5;
 }
 </style>
