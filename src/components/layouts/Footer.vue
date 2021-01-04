@@ -53,7 +53,7 @@ export default defineComponent({
         },
         {
           name: "LinkedIn",
-          href: "https://www.linkedin.com/in/richard-zille/",
+          href: "https://www.linkedin.com/in/richard-zille",
           icon: "fab fa-linkedin"
         }
       ] as Link[]

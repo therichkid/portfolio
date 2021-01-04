@@ -32,6 +32,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+html {
+  scroll-behavior: smooth;
+}
 .anchor::before {
   content: "";
   display: block;

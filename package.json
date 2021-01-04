@@ -10,7 +10,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "bulma": "^0.9.1",
-    "core-js": "^3.6.5",
+    "core-js": "^3.8.2",
     "vue": "^3.0.5"
   },
   "devDependencies": {
