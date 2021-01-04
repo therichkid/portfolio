@@ -40,9 +40,9 @@
     <div class="container is-max-desktop">
       <div class="content has-text-justified is-size-5">
         <p>
-          I am a <b>Frontend Developer</b> with knowledge in Design and Backend technologies living in Munich, Germany.
-          I love to code in <b>TypeScript</b> and utilize <b>Angular</b> and <b>Vue</b> for my projects. I am naturally
-          curious and always eager to learn new technologies.
+          I am a <b>Frontend Web Developer</b> with experience in Web Design and Backend technologies living in Munich,
+          Germany. I love to code in <b>TypeScript</b> and utilize <b>Angular</b> and <b>Vue</b> for my projects. I am
+          naturally curious and always eager to learn new technologies.
         </p>
         <p>
           I have a Master's degree in Geoinformatics and work for <b>European Computer Telecoms</b>, a Software company
