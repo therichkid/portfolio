@@ -16,7 +16,13 @@
         </a>
       </p>
 
-      <p class="pt-5 has-text-grey-lighter is-size-7">
+      <p class="pt-5 mb-3">
+        <router-link to="/"><b>Home</b></router-link>
+        <span class="px-2">&#8226;</span>
+        <router-link to="/privacy-policy"><b>Privacy Policy</b></router-link>
+      </p>
+
+      <p class="pt-3 mb-3 has-text-grey-lighter is-size-7">
         Hero Background Image by
         <a href="https://unsplash.com/@betagamma" target="_blank" rel="noopener noreferrer">Daniil Silantev</a>, Code
         Editor Image by
