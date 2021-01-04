@@ -77,6 +77,17 @@
             aria-label="Message"
           ></textarea>
         </div>
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <input type="checkbox" required />
+              <span class="pl-1">
+                I agree that my personal data will be stored and processed for purposes stated in the
+                <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">privacy policy</a>. *
+              </span>
+            </label>
+          </div>
+        </div>
         <p class="has-text-right has-text-grey is-size-7">* Required</p>
         <button type="submit" class="button is-primary is-medium mt-2" :class="{ 'is-loading': isLoading }">
           Submit
@@ -130,8 +141,8 @@ export default defineComponent({
       this.data.date = new Date().toISOString();
       this.data.timer = Date.now() - this.initTime;
 
-      const url = "https://us-central1-portfolio-1e5a5.cloudfunctions.net/submit";
-      // const debugUrl = "http://localhost:5001/portfolio-1e5a5/us-central1/submit";
+      const url = "https://europe-west1-portfolio-1e5a5.cloudfunctions.net/submit";
+      // const debugUrl = "http://localhost:5001/portfolio-1e5a5/europe-west1/submit";
 
       fetch(url, {
         method: "POST",

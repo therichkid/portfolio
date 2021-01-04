@@ -16,7 +16,7 @@ interface ContactData {
 
 const db = initDb.database();
 
-const submit = functions.https.onRequest((request, response) => {
+const submit = functions.region("europe-west1").https.onRequest((request, response) => {
   cors({ origin: true })(request, response, () => {
     if (request.method !== "POST") {
       return;
