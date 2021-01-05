@@ -2,7 +2,7 @@
   <nav class="navbar is-primary is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a
-        @click="isMenuOpen = !isMenuOpen"
+        @click.stop="toggleMenu"
         class="navbar-burger"
         :class="{ 'is-active': isMenuOpen }"
         role="button"
@@ -20,7 +20,6 @@
         <a
           v-for="item in navItems"
           :key="item.id"
-          @click="isMenuOpen = false"
           :href="item.href || `#${item.id}`"
           class="navbar-item"
           :class="{ 'is-active': activeItem === item.id }"
@@ -73,6 +72,14 @@ export default defineComponent({
   methods: {
     setActiveItem(): void {
       this.activeItem = this.navItems.map(item => item.id).find(this.isInView) || this.activeItem;
+    },
+    toggleMenu(event: MouseEvent): void {
+      event.preventDefault();
+      this.isMenuOpen = !this.isMenuOpen;
+      if (this.isMenuOpen) {
+        // Close menu and deregister on next click
+        window.addEventListener("click", () => (this.isMenuOpen = false), { once: true });
+      }
     }
   },
 
