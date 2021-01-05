@@ -94,8 +94,8 @@
         <p>
           Firebase is certified under the privacy and security standards ISO 27001, SOC 1, SOC 2 and SOC 3 and is
           committed to having a lawful basis for data transfers in compliance with the EU General Data Protection
-          Regulation (GDPR). You can find more information about the privacy policy of Firebase, including more detailed
-          information about data processing and the support for GDPR
+          Regulation (GDPR). You can find more information about the privacy policy of Firebase, including more details
+          about data processing and the support for GDPR
           <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">here</a>.
         </p>
         <h2 class="is-size-4">How can you contact me?</h2>
