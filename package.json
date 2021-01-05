@@ -11,6 +11,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "bulma": "^0.9.1",
     "core-js": "^3.8.2",
+    "register-service-worker": "^1.7.1",
     "vue": "^3.0.5"
   },
   "devDependencies": {
@@ -20,6 +21,7 @@
     "@typescript-eslint/parser": "^2.33.0",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-pwa": "^4.5.9",
     "@vue/cli-plugin-typescript": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.5",

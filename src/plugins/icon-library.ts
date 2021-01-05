@@ -166,6 +166,10 @@ export default {
       prestashop: {
         name: "PrestaShop",
         img: require("@/assets/img/logos/prestashop.png")
+      },
+      pwa: {
+        name: "Progressive Web App",
+        img: require("@/assets/img/logos/pwa.png")
       }
     } as IconMap;
   }

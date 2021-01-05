@@ -167,8 +167,8 @@ export default defineComponent({
             }
           },
           description:
-            "The website you are currently visiting was created with Vue 3. The project includes Firebase functions for saving contact requests to a realtime database and sending Emails with basic spam protection.",
-          technologies: ["ts", "vue", "bulma", "firebase"],
+            "The website you are currently visiting was created with Vue 3. The project includes Firebase functions for saving contact requests to a realtime database and sending Emails with basic spam protection. It also utilizes Progressive Web App features like offline caching.",
+          technologies: ["ts", "vue", "bulma", "firebase", "pwa"],
           github: "https://github.com/therichkid/portfolio"
         },
         {
