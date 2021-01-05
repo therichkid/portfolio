@@ -22,13 +22,25 @@ module.exports = {
           src: "img/android-chrome-512.png",
           sizes: "512x512",
           type: "image/png",
-          purpose: "any maskable"
+          purpose: "any"
+        },
+        {
+          src: "img/android-chrome-maskable-512.png",
+          sizes: "512x512",
+          type: "image/png",
+          purpose: "maskable"
         },
         {
           src: "img/android-chrome-192.png",
           sizes: "192x192",
           type: "image/png",
-          purpose: "any maskable"
+          purpose: "any"
+        },
+        {
+          src: "img/android-chrome-maskable-512.png",
+          sizes: "512x512",
+          type: "image/png",
+          purpose: "maskable"
         }
       ]
     },
