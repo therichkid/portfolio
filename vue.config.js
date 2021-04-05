@@ -50,6 +50,9 @@ module.exports = {
       appleTouchIcon: "img/apple-touch-icon.png",
       maskIcon: "img/safari-pinned-tab.svg",
       msTileImage: "img/mstile.png"
+    },
+    workboxOptions: {
+      skipWaiting: true
     }
   }
 };
