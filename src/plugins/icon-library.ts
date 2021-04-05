@@ -1,6 +1,7 @@
 import { dom, library } from "@fortawesome/fontawesome-svg-core";
 import {
   faChevronLeft,
+  faChevronRight,
   faCode,
   faEnvelope,
   faExpandArrowsAlt,
@@ -46,6 +47,7 @@ export default {
       faGlobe,
       faCode,
       faChevronLeft,
+      faChevronRight,
 
       // Brands
       faGithub,

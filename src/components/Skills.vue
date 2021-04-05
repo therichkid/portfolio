@@ -40,27 +40,51 @@
       </div>
 
       <h3 class="subtitle is-size-4 mt-6 pt-4">Certificates</h3>
-      <div class="columns is-multiline is-mobile certificates">
-        <div v-for="certificate in certificates" :key="certificate.name" class="column is-3-desktop is-6-mobile">
-          <div class="card is-interactive" style="height: 100%" @click="openModal(certificate)">
-            <div class="card-image">
-              <figure class="image is-4by3">
-                <picture>
-                  <source :srcset="certificate.img.webp['480']" type="image/webp" />
-                  <source :srcset="certificate.img.jpg['480']" type="image/jpeg" />
-                  <img :src="certificate.img.jpg['480']" :alt="certificate.name" />
-                </picture>
-              </figure>
-            </div>
-            <span class="icon overlay-icon has-background-dark">
-              <i class="fas fa-expand-arrows-alt"></i>
+
+      <div class="certificates-container">
+        <div v-if="canScrollLeft || canScrollRight" class="scroller">
+          <button @click="scrollLeft()" :disabled="!canScrollLeft" class="button is-text">
+            <span class="icon is-large">
+              <i class="fas fa-lg fa-chevron-left"></i>
             </span>
-            <div class="card-content">
-              {{ certificate.name }}
+          </button>
+        </div>
+
+        <div ref="certificates" class="columns is-mobile certificates">
+          <div
+            v-for="certificate in certificates"
+            :key="certificate.name"
+            class="column is-3-desktop is-4-tablet is-6-mobile"
+          >
+            <div class="card is-interactive" style="height: 100%" @click="openModal(certificate)">
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  <picture>
+                    <source :srcset="certificate.img.webp['480']" type="image/webp" />
+                    <source :srcset="certificate.img.jpg['480']" type="image/jpeg" />
+                    <img :src="certificate.img.jpg['480']" :alt="certificate.name" />
+                  </picture>
+                </figure>
+              </div>
+              <span class="icon overlay-icon has-background-dark">
+                <i class="fas fa-expand-arrows-alt"></i>
+              </span>
+              <div class="card-content">
+                {{ certificate.name }}
+              </div>
             </div>
           </div>
         </div>
+
+        <div v-if="canScrollLeft || canScrollRight" class="scroller">
+          <button @click="scrollRight()" :disabled="!canScrollRight" class="button is-text">
+            <span class="icon is-large">
+              <i class="fas fa-lg fa-chevron-right"></i>
+            </span>
+          </button>
+        </div>
       </div>
+
       <div class="modal" :class="{ 'is-active': modal.isOpen }" v-if="modal.isOpen">
         <div @click="closeModal()" class="modal-background"></div>
         <div class="modal-content">
@@ -215,6 +239,8 @@ export default defineComponent({
           format: "3by4"
         }
       ] as Certificate[],
+      canScrollLeft: false,
+      canScrollRight: false,
       modal: {
         isOpen: false,
         certificate: {} as Certificate
@@ -251,6 +277,23 @@ export default defineComponent({
         }
       }, 50);
     },
+    scrollLeft(): void {
+      (this.$refs.certificates as HTMLElement).scrollLeft -= 250;
+      setTimeout(() => {
+        this.calculateScrollPossibilities();
+      }, 1000);
+    },
+    scrollRight(): void {
+      (this.$refs.certificates as HTMLElement).scrollLeft += 250;
+      setTimeout(() => {
+        this.calculateScrollPossibilities();
+      }, 1000);
+    },
+    calculateScrollPossibilities(): void {
+      const ref = this.$refs.certificates as HTMLElement;
+      this.canScrollLeft = ref.scrollLeft > 0;
+      this.canScrollRight = ref.scrollLeft < ref.scrollWidth - ref.clientWidth;
+    },
     openModal(certificate: Certificate) {
       this.modal = {
         isOpen: true,
@@ -266,11 +309,16 @@ export default defineComponent({
   },
 
   mounted() {
+    this.calculateScrollPossibilities();
     window.addEventListener("scroll", this.setProgressAnimations);
+    window.addEventListener("resize", this.calculateScrollPossibilities);
+    (this.$refs.certificates as HTMLElement).addEventListener("scroll", this.calculateScrollPossibilities);
   },
 
   unmounted() {
     window.removeEventListener("scroll", this.setProgressAnimations);
+    window.removeEventListener("resize", this.calculateScrollPossibilities);
+    (this.$refs.certificates as HTMLElement).removeEventListener("scroll", this.calculateScrollPossibilities);
   }
 });
 </script>
@@ -280,10 +328,33 @@ export default defineComponent({
   max-height: 28px;
   width: auto;
 }
-.certificates img {
-  object-fit: cover;
-  object-position: top center;
+
+.certificates-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  .scroller {
+    width: 40px;
+  }
+
+  .certificates {
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    img {
+      object-fit: cover;
+      object-position: top center;
+    }
+  }
 }
+
 .progress::-webkit-progress-value {
   transition: width 0.1s ease;
 }
