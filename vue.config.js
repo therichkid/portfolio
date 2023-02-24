@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
-
 module.exports = {
   productionSourceMap: false,
   css: {
