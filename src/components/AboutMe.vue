@@ -15,7 +15,7 @@
 
     <div class="hero-body">
       <div class="container has-text-centered">
-        <figure class="image is-128x128 is-inline-block ">
+        <figure class="image is-128x128 is-inline-block">
           <img
             class="is-rounded has-background-primary"
             src="@/assets/img/avatar.png"
@@ -45,7 +45,8 @@
           naturally curious and always eager to learn new technologies.
         </p>
         <p>
-          I have a Master's degree in Geoinformatics and work for <b>European Computer Telecoms</b>, a Software company
+          I have a Master's degree in Geoinformatics and have been working for <b>Wagawin</b>, a company focussed on
+          interactive Ads to get better audience insights and <b>European Computer Telecoms</b>, a Software company
           specialized in telecommunications. In addition, I design, create and maintain Web projects for multiple
           satisfied clients with my own company, <b>Thrive Media</b>.
         </p>
@@ -64,9 +65,9 @@ interface Title {
 
 type ImageMap = {
   [key in "webp" | "jpg"]: {
-    1920: NodeRequire;
-    1280: NodeRequire;
-    480: NodeRequire;
+    1920: HTMLImageElement;
+    1280: HTMLImageElement;
+    480: HTMLImageElement;
   };
 };
 
@@ -93,7 +94,7 @@ export default defineComponent({
           1280: require("@/assets/img/hero/lake-turgoyak-1280.jpg"),
           480: require("@/assets/img/hero/lake-turgoyak-480.jpg")
         }
-      }
+      } as ImageMap
     };
   },
 

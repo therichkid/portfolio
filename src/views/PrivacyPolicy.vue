@@ -29,9 +29,7 @@
           profile.
         </p>
         <h2 class="is-size-4">Why do I store information?</h2>
-        <p>
-          I store information to get in touch with visitors of my website through the contact form.
-        </p>
+        <p>I store information to get in touch with visitors of my website through the contact form.</p>
         <h2 class="is-size-4">What information do I store?</h2>
         <p>
           I store user input data sent through the contact form on this website, along with meta information about the

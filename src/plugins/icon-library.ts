@@ -30,7 +30,7 @@ interface IconMap {
     name: string;
     icon?: string;
     color?: string;
-    img?: NodeRequire;
+    img?: HTMLImageElement;
   };
 }
 
@@ -116,6 +116,10 @@ export default {
       vue: {
         name: "Vue",
         img: require("@/assets/img/logos/vue.png")
+      },
+      rxjs: {
+        name: "RxJS",
+        img: require("@/assets/img/logos/rxjs.png")
       },
       am: {
         name: "Angular Material",

@@ -112,7 +112,7 @@ interface ContactData {
   timer: number;
 }
 
-interface Alert {
+interface AlertData {
   type: "success" | "error";
   message: string;
 }
@@ -125,7 +125,7 @@ export default defineComponent({
   data() {
     return {
       data: {} as ContactData,
-      alert: {} as Alert,
+      alert: {} as AlertData,
       showAlert: false,
       initTime: 0,
       isLoading: false

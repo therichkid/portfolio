@@ -91,8 +91,8 @@ interface Project {
 
 type ImageMap = {
   [key in "webp" | "jpg"]: {
-    480: NodeRequire;
-    960: NodeRequire;
+    480: HTMLImageElement;
+    960: HTMLImageElement;
   };
 };
 

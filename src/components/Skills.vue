@@ -138,8 +138,8 @@ interface Certificate {
 
 type ImageMap = {
   [key in "webp" | "jpg"]: {
-    1280: NodeRequire;
-    480: NodeRequire;
+    1280: HTMLImageElement;
+    480: HTMLImageElement;
   };
 };
 
@@ -161,8 +161,9 @@ export default defineComponent({
           { id: "sql", level: { current: 0, full: 75 } }
         ],
         frontend: [
-          { id: "angular", level: { current: 0, full: 90 } },
+          { id: "angular", level: { current: 0, full: 95 } },
           { id: "vue", level: { current: 0, full: 95 } },
+          { id: "rxjs", level: { current: 0, full: 75 } },
           { id: "am", level: { current: 0, full: 70 } },
           { id: "vuetify", level: { current: 0, full: 95 } },
           { id: "bulma", level: { current: 0, full: 65 } },
