@@ -45,7 +45,7 @@
           naturally curious and always eager to learn new technologies.
         </p>
         <p>
-          I have a Master's degree in Geoinformatics and have been working for <b>Wagawin</b>, a company focussed on
+          I have a Master's degree in Geoinformatics and have been working for <b>Wagawin</b>, a company focused on
           interactive Ads to get better audience insights and <b>European Computer Telecoms</b>, a Software company
           specialized in telecommunications. In addition, I design, create and maintain Web projects for multiple
           satisfied clients with my own company, <b>Thrive Media</b>.
