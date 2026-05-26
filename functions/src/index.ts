@@ -33,6 +33,7 @@ const submit = functions.region("europe-west1").https.onRequest((request, respon
     if (isSpam(data)) {
       // Provide positive feedback, but don't send email and don't add entry to the db
       response.status(200).send({ success: true, message: "Your message has been sent!" });
+      return;
     }
 
     Promise.all([sendMail(data), db.ref("contact-form").push().set(data)])
