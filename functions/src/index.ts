@@ -1,6 +1,6 @@
+import * as cors from "cors";
 import * as functions from "firebase-functions";
 import * as nodemailer from "nodemailer";
-import * as cors from "cors";
 import { initDb } from "./config/db";
 
 interface ContactData {
@@ -26,18 +26,16 @@ const submit = functions.region("europe-west1").https.onRequest((request, respon
     const errorMessage = "Something went wrong. Please try again later!";
 
     if (!isValid(data)) {
-      console.error("Failed validation check");
       response.status(400).send({ success: false, message: errorMessage });
       return;
     }
 
-    Promise.all([
-      sendMail(data),
-      db
-        .ref("contact-form")
-        .push()
-        .set(data)
-    ])
+    if (isSpam(data)) {
+      // Provide positive feedback, but don't send email and don't add entry to the db
+      response.status(200).send({ success: true, message: "Your message has been sent!" });
+    }
+
+    Promise.all([sendMail(data), db.ref("contact-form").push().set(data)])
       .then(() => {
         response.status(200).send({ success: true, message: "Your message has been sent!" });
       })
@@ -49,15 +47,20 @@ const submit = functions.region("europe-west1").https.onRequest((request, respon
 });
 
 const isValid = (data: ContactData): boolean => {
-  // Mandatory checks
   if (!data.name || !data.email || !data.message || !data.date) {
     return false;
   }
-  // Spam checks
-  if (data.hp || data.timer < 5000) {
-    return false;
-  }
   return true;
+};
+
+const isSpam = (data: ContactData): boolean => {
+  if (data.hp || data.timer < 5000) {
+    return true;
+  }
+  if (data.message.trim().split(/\s+/).length < 8) {
+    return true;
+  }
+  return false;
 };
 
 // const gmailOptions = {
